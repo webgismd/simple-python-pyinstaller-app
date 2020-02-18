@@ -19,7 +19,7 @@ spec:
     - python --version
     tty: true
   """
-}
+    }}
     stages {
         stage('build') {
             steps {
