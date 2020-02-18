@@ -1,7 +1,8 @@
 pipeline {
     agent none
-    stages {
-        node('python') {
+    node('python') {
+        stages {
+        
         stage('Build') {
             container('go-agent'){
             steps {
