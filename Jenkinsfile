@@ -2,10 +2,11 @@ pipeline {
    agent { label "jenkins-python" }
     stages {
         stage('build') {
-             container('python') steps {
+              steps {
+                 container('python'){
                 sh  'pwd'
                 sh 'python --version'
-                
+                 }
             }
         }
     }
