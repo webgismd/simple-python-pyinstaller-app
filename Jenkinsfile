@@ -1,6 +1,6 @@
 pipeline {
- agent {
-      label 'kubernetes' }
+ agent kubernetes {
+      label 'openshift' }
     stages {
         stage('build') {
               steps {
