@@ -1,14 +1,18 @@
 pipeline {
- agent kubernetes {label 'python'}
-
+    agent none
     stages {
-        stage('build') {
-              steps {
-                 container('python'){
-                sh  'pwd'
-                sh 'python --version'
-                 }
+        stage('Build') {
+            agent {
+                kubernetes {
+                    label 'python'
+                }
+            }
+            steps {
+                sh 'pwd'
+                sh 'python -v'
+                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
+       
     }
 }
