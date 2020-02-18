@@ -7,7 +7,7 @@ pipeline {
                 sh 'tar xzf Python-3.6.9.tgz'
                 dir("${env.WORKSPACE}/Python-3.6.9"){
                         sh 'pwd'
-                        sh 'make altinstall'
+                        sh 'make install'
                         sh 'configure --enable-optimizations'
                 }
                 sh 'rm Python-3.6.9.tgz'
