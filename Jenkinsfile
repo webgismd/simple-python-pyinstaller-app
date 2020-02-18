@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'rmdir -f  s2i-python-container'
+                sh 'rm -rf  s2i-python-container'
                 sh 'git clone https://github.com/sclorg/s2i-python-container.git'
                 sh 'cd s2i-python-container'
                 sh 'ls -l'
