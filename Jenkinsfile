@@ -1,5 +1,5 @@
 pipeline {
-   agent { label "jenkins-python" }
+   node('python')
     stages {
         stage('build') {
               steps {
