@@ -1,45 +1,21 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'python:2-alpine'
-                }
-            }
             steps {
+                sh 'cd /usr/src'
+                sh 'wget https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz'
+                sh 'tar xzf Python-3.6.9.tgz'
+                sh 'cd Python-3.6.9'
+                sh 'make altinstall'
+                sh './configure --enable-optimizations'
+                sh 'rm /usr/src/Python-3.6.9.tgz'
+                sh 'pwd'
+                sh 'ls -l'
+                sh 'python -V'
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
-        stage('Test') {
-            agent {
-                docker {
-                    image 'qnib/pytest'
-                }
-            }
-            steps {
-                sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
-            }
-        }
-        stage('Deliver') {
-            agent {
-                docker {
-                    image 'cdrx/pyinstaller-linux:python2'
-                }
-            }
-            steps {
-                sh 'pyinstaller --onefile sources/add2vals.py'
-            }
-            post {
-                success {
-                    archiveArtifacts 'dist/add2vals'
-                }
-            }
-        }
+        
     }
 }
