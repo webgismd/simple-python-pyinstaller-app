@@ -1,6 +1,6 @@
 pipeline {
  agent {
-      label 'openshift' }
+      label 'python' }
     stages {
         stage('build') {
               steps {
