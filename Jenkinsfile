@@ -1,6 +1,6 @@
 pipeline {
     agent {
-    kubernetes {
+    openshift {
       label 'python'
       defaultContainer 'jnlp'
       yaml """
