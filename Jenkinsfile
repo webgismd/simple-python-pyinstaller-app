@@ -9,7 +9,7 @@ pipeline {
                 sh  'pwd'
                 sh 'cd s2i-python-container'
                 sh 'ls -l'
-                sh 'make build TARGET=rhel7 VERSIONS=3.6'
+                sh 's2i-python-container/make build TARGET=rhel7 VERSIONS=3.6'
                 sh 'python --version'
                 
             }
