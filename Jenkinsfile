@@ -1,8 +1,8 @@
 pipeline {
-   agent { label 'openshift' }
+   agent { label "jenkins-python" }
     stages {
         stage('build') {
-            steps {
+             container('python') steps {
                 sh  'pwd'
                 sh 'python --version'
                 
