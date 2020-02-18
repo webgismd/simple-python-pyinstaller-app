@@ -1,7 +1,5 @@
 pipeline {
-     agent { 
-        kubernetes {label python}
-    }
+     agent  kubernetes {label python}
     stages {
         stage('build') {
             steps {
