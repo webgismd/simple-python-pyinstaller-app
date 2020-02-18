@@ -1,12 +1,14 @@
 pipeline {
-    agent { 
+     agent { 
         kubernetes {label python}
     }
-    stages { 
+    stages {
         stage('build') {
-              steps {
-                 sh 'python --version'
-              }            
+            steps {
+                sh  'pwd'
+                sh 'python --version'
+                
+            }
         }
     }
 }
